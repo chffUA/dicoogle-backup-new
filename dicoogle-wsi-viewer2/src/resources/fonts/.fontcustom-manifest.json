@@ -1,0 +1,407 @@
+{
+  "checksum": {
+    "previous": "0594a9ef295bc7017891bca715808c51f809e8cbdd63e7c2a2c188d5684b5e4f",
+    "current": "0594a9ef295bc7017891bca715808c51f809e8cbdd63e7c2a2c188d5684b5e4f"
+  },
+  "fonts": [
+    "./font-viewer.ttf",
+    "./font-viewer.svg",
+    "./font-viewer.woff",
+    "./font-viewer.eot"
+  ],
+  "glyphs": {
+    "abdomen": {
+      "codepoint": 61696,
+      "source": "svg/abdomen.svg"
+    },
+    "angle": {
+      "codepoint": 61697,
+      "source": "svg/angle.svg"
+    },
+    "annotate": {
+      "codepoint": 61698,
+      "source": "svg/annotate.svg"
+    },
+    "arrow": {
+      "codepoint": 61699,
+      "source": "svg/arrow.svg"
+    },
+    "bone": {
+      "codepoint": 61700,
+      "source": "svg/bone.svg"
+    },
+    "brain": {
+      "codepoint": 61701,
+      "source": "svg/brain.svg"
+    },
+    "breast": {
+      "codepoint": 61702,
+      "source": "svg/breast.svg"
+    },
+    "browse": {
+      "codepoint": 61703,
+      "source": "svg/browse.svg"
+    },
+    "browse-image-level": {
+      "codepoint": 61785,
+      "source": "svg/browse-image-level.svg"
+    },
+    "browse-series-level": {
+      "codepoint": 61786,
+      "source": "svg/browse-series-level.svg"
+    },
+    "catalyst": {
+      "codepoint": 61704,
+      "source": "svg/catalyst.svg"
+    },
+    "circle": {
+      "codepoint": 61705,
+      "source": "svg/circle.svg"
+    },
+    "color": {
+      "codepoint": 61706,
+      "source": "svg/color.svg"
+    },
+    "contract": {
+      "codepoint": 61707,
+      "source": "svg/contract.svg"
+    },
+    "equalizer": {
+      "codepoint": 61708,
+      "source": "svg/equalizer.svg"
+    },
+    "eraser": {
+      "codepoint": 61709,
+      "source": "svg/eraser.svg"
+    },
+    "expand": {
+      "codepoint": 61710,
+      "source": "svg/expand.svg"
+    },
+    "export": {
+      "codepoint": 61711,
+      "source": "svg/export.svg"
+    },
+    "file-pdf": {
+      "codepoint": 61712,
+      "source": "svg/file-pdf.svg"
+    },
+    "flip": {
+      "codepoint": 61713,
+      "source": "svg/flip.svg"
+    },
+    "flip-horizontal": {
+      "codepoint": 61714,
+      "source": "svg/flip-horizontal.svg"
+    },
+    "flip-vertical": {
+      "codepoint": 61715,
+      "source": "svg/flip-vertical.svg"
+    },
+    "focus": {
+      "codepoint": 61787,
+      "source": "svg/focus.svg"
+    },
+    "gender-female": {
+      "codepoint": 61716,
+      "source": "svg/gender-female.svg"
+    },
+    "gender-male": {
+      "codepoint": 61717,
+      "source": "svg/gender-male.svg"
+    },
+    "gesture-drag": {
+      "codepoint": 61718,
+      "source": "svg/gesture-drag.svg"
+    },
+    "gesture-drag-horizontal": {
+      "codepoint": 61719,
+      "source": "svg/gesture-drag-horizontal.svg"
+    },
+    "gesture-drag-vertical": {
+      "codepoint": 61720,
+      "source": "svg/gesture-drag-vertical.svg"
+    },
+    "gesture-pinch": {
+      "codepoint": 61721,
+      "source": "svg/gesture-pinch.svg"
+    },
+    "gesture-rotate": {
+      "codepoint": 61722,
+      "source": "svg/gesture-rotate.svg"
+    },
+    "gesture-tap": {
+      "codepoint": 61723,
+      "source": "svg/gesture-tap.svg"
+    },
+    "goofy": {
+      "codepoint": 61724,
+      "source": "svg/goofy.svg"
+    },
+    "head": {
+      "codepoint": 61725,
+      "source": "svg/head.svg"
+    },
+    "hot": {
+      "codepoint": 61726,
+      "source": "svg/hot.svg"
+    },
+    "images": {
+      "codepoint": 61788,
+      "source": "svg/images.svg"
+    },
+    "import-dicom": {
+      "codepoint": 61727,
+      "source": "svg/import-dicom.svg"
+    },
+    "inverse": {
+      "codepoint": 61728,
+      "source": "svg/inverse.svg"
+    },
+    "keyboard-1": {
+      "codepoint": 61729,
+      "source": "svg/keyboard-1.svg"
+    },
+    "keyboard-2": {
+      "codepoint": 61730,
+      "source": "svg/keyboard-2.svg"
+    },
+    "keyboard-3": {
+      "codepoint": 61731,
+      "source": "svg/keyboard-3.svg"
+    },
+    "keyboard-4": {
+      "codepoint": 61732,
+      "source": "svg/keyboard-4.svg"
+    },
+    "keyboard-down": {
+      "codepoint": 61733,
+      "source": "svg/keyboard-down.svg"
+    },
+    "keyboard-esc": {
+      "codepoint": 61734,
+      "source": "svg/keyboard-esc.svg"
+    },
+    "keyboard-left": {
+      "codepoint": 61735,
+      "source": "svg/keyboard-left.svg"
+    },
+    "keyboard-right": {
+      "codepoint": 61736,
+      "source": "svg/keyboard-right.svg"
+    },
+    "keyboard-up": {
+      "codepoint": 61737,
+      "source": "svg/keyboard-up.svg"
+    },
+    "labels": {
+      "codepoint": 61771,
+      "source": "svg/labels.svg"
+    },
+    "line": {
+      "codepoint": 61738,
+      "source": "svg/line.svg"
+    },
+    "livewire": {
+      "codepoint": 61739,
+      "source": "svg/livewire.svg"
+    },
+    "lungs": {
+      "codepoint": 61740,
+      "source": "svg/lungs.svg"
+    },
+    "miscellaneous": {
+      "codepoint": 61770,
+      "source": "svg/miscellaneous.svg"
+    },
+    "mouse-click": {
+      "codepoint": 61741,
+      "source": "svg/mouse-click.svg"
+    },
+    "mouse-drag": {
+      "codepoint": 61742,
+      "source": "svg/mouse-drag.svg"
+    },
+    "mouse-drag-vertical": {
+      "codepoint": 61743,
+      "source": "svg/mouse-drag-vertical.svg"
+    },
+    "mouse-rotate": {
+      "codepoint": 61744,
+      "source": "svg/mouse-rotate.svg"
+    },
+    "move": {
+      "codepoint": 61745,
+      "source": "svg/move.svg"
+    },
+    "multi-monitor": {
+      "codepoint": 61775,
+      "source": "svg/multi-monitor.svg"
+    },
+    "multiple": {
+      "codepoint": 61746,
+      "source": "svg/multiple.svg"
+    },
+    "overlay-hidden": {
+      "codepoint": 61747,
+      "source": "svg/overlay-hidden.svg"
+    },
+    "overlay-shown": {
+      "codepoint": 61748,
+      "source": "svg/overlay-shown.svg"
+    },
+    "pencil": {
+      "codepoint": 61749,
+      "source": "svg/pencil.svg"
+    },
+    "pointer": {
+      "codepoint": 61750,
+      "source": "svg/pointer.svg"
+    },
+    "polyline": {
+      "codepoint": 61751,
+      "source": "svg/polyline.svg"
+    },
+    "print": {
+      "codepoint": 61752,
+      "source": "svg/print.svg"
+    },
+    "rainbow": {
+      "codepoint": 61753,
+      "source": "svg/rainbow.svg"
+    },
+    "record": {
+      "codepoint": 61754,
+      "source": "svg/record.svg"
+    },
+    "red": {
+      "codepoint": 61755,
+      "source": "svg/red.svg"
+    },
+    "refresh": {
+      "codepoint": 61756,
+      "source": "svg/refresh.svg"
+    },
+    "report": {
+      "codepoint": 61757,
+      "source": "svg/report.svg"
+    },
+    "reset": {
+      "codepoint": 61758,
+      "source": "svg/reset.svg"
+    },
+    "rotate": {
+      "codepoint": 61759,
+      "source": "svg/rotate.svg"
+    },
+    "ruler": {
+      "codepoint": 61760,
+      "source": "svg/ruler.svg"
+    },
+    "send-local": {
+      "codepoint": 61782,
+      "source": "svg/send-local.svg"
+    },
+    "send-remote": {
+      "codepoint": 61783,
+      "source": "svg/send-remote.svg"
+    },
+    "shortcut": {
+      "codepoint": 61761,
+      "source": "svg/shortcut.svg"
+    },
+    "square": {
+      "codepoint": 61762,
+      "source": "svg/square.svg"
+    },
+    "study": {
+      "codepoint": 61784,
+      "source": "svg/study.svg"
+    },
+    "transform": {
+      "codepoint": 61763,
+      "source": "svg/transform.svg"
+    },
+    "unknown": {
+      "codepoint": 61764,
+      "source": "svg/unknown.svg"
+    },
+    "view-four": {
+      "codepoint": 61765,
+      "source": "svg/view-four.svg"
+    },
+    "view-one": {
+      "codepoint": 61766,
+      "source": "svg/view-one.svg"
+    },
+    "view-two-horizontal": {
+      "codepoint": 61772,
+      "source": "svg/view-two-horizontal.svg"
+    },
+    "view-two-vertical": {
+      "codepoint": 61773,
+      "source": "svg/view-two-vertical.svg"
+    },
+    "views": {
+      "codepoint": 61769,
+      "source": "svg/views.svg"
+    },
+    "zoom-fit": {
+      "codepoint": 61781,
+      "source": "svg/zoom-fit.svg"
+    },
+    "zoom-free": {
+      "codepoint": 61776,
+      "source": "svg/zoom-free.svg"
+    },
+    "zoom-quadrant-bottom": {
+      "codepoint": 61778,
+      "source": "svg/zoom-quadrant-bottom.svg"
+    },
+    "zoom-quadrant-center": {
+      "codepoint": 61779,
+      "source": "svg/zoom-quadrant-center.svg"
+    },
+    "zoom-quadrant-top": {
+      "codepoint": 61777,
+      "source": "svg/zoom-quadrant-top.svg"
+    },
+    "zoom-roi": {
+      "codepoint": 61780,
+      "source": "svg/zoom-roi.svg"
+    }
+  },
+  "options": {
+    "autowidth": true,
+    "config": "svg/font-viewer.yml",
+    "css_selector": ".icon-{{glyph}}",
+    "debug": false,
+    "font_ascent": 448,
+    "font_descent": 64,
+    "font_design_size": 16,
+    "font_em": 512,
+    "font_name": "font-viewer",
+    "force": false,
+    "input": {
+      "templates": "svg",
+      "vectors": "svg"
+    },
+    "no_hash": true,
+    "output": {
+      "css": "../../stylesheets/viewer",
+      "fonts": ".",
+      "preview": "."
+    },
+    "preprocessor_path": "",
+    "quiet": false,
+    "skip_first": false,
+    "templates": [
+      "css",
+      "preview"
+    ]
+  },
+  "templates": [
+    "../../stylesheets/viewer/font-viewer.css",
+    "./font-viewer-preview.html"
+  ]
+}

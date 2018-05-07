@@ -1,0 +1,9 @@
+[submodule "wsi-io"]
+	path = wsi-io
+	url = https://bitbucket.org/tmgodinho_godinho/whole-slide-imaging.git
+[submodule "imageio-ext"]
+	path = imageio-ext
+	url = https://github.com/tmgodinho/imageio-ext.git
+[submodule "dcm4che2"]
+	path = dcm4che2
+	url = https://bitbucket.org/tmgodinho_godinho/dcm4che2.git

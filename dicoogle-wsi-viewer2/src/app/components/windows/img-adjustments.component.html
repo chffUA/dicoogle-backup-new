@@ -1,0 +1,109 @@
+<main>
+    <!-- BRIGHTNESS -->
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-2">
+                <label class="control-label">Brightness</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <input type="range" max="100" min="-100" step="1" [(ngModel)]="brightControl.value" name="brightControl-value">
+            </div>
+            <div class="col-md-1">
+                <label>{{brightControl.value}}</label>
+            </div>
+            <div class="col-md-1">
+                <input type="checkbox" [(ngModel)]="brightControl.enabled" name="brightControl-enableControl">
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-default btn-xs" (click)="brightControl.reset()"> Reset </button>
+            </div>
+        </div>
+    </form>
+
+    <!-- CONTRAST -->
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-2">
+                <label class="control-label">Contrast</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <input type="range" max="100" min="-100" step="1" [(ngModel)]="contrastControl.value" name="contrastControl-value">
+            </div>
+            <div class="col-md-1">
+                <label id="inputEmail1">{{contrastControl.value}}</label>
+            </div>
+            <div class="col-md-1">
+                <input type="checkbox" [(ngModel)]="contrastControl.enabled" name="contrastControl-enableControl">
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-default btn-xs" (click)="contrastControl.reset()"> Reset</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- GAMMA -->
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-2">
+                <label class="control-label">Gamma</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <input type="range" max="10" min="0" step="0.1" [(ngModel)]="gammaControl.value" name="gammaControl-value">
+            </div>
+            <div class="col-md-1">
+                <label id="inputEmail1">{{gammaControl.value}}</label>
+            </div>
+            <div class="col-md-1">
+                <input type="checkbox" [(ngModel)]="gammaControl.enabled" name="gammaControl-enableControl">
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-default btn-xs" (click)="gammaControl.reset()"> Reset</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- RGB -->
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-4">
+                <label class="control-label">Color (RGB)</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <div><input type="range" class="red-control" max="100" min="-100" step="1" [(ngModel)]="rgbControl.red" name="rgbControl-value0"></div>
+            </div>
+            <div class="col-md-1">
+                <label>{{rgbControl.red}}</label>
+            </div>
+            <div class="col-md-1">
+                <input type="checkbox" [(ngModel)]="rgbControl.enabled" name="rgbControl-enableControl">
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-default btn-xs" (click)="rgbControl.reset()"> Reset</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <div><input type="range" class="green-control" max="100" min="-100" step="1" [(ngModel)]="rgbControl.green" name="rgbControl-value1"></div>
+            </div>
+            <div class="col-md-1">
+                <label>{{rgbControl.green}}</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <div><input type="range" class="blue-control" max="100" min="-100" step="1" [(ngModel)]="rgbControl.blue" name="rgbControl-value2"></div>
+            </div>
+            <div class="col-md-1">
+                <label>{{rgbControl.blue}}</label>
+            </div>
+        </div>
+    </form>
+</main>

@@ -1,0 +1,19 @@
+{
+  "name": "dicoogle-wholeslide-viewer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "webpack --display-modules"
+  },
+  "author": "Tiago Marques Godinho - tmgodinho@ua.pt",
+  "license": "ISC",
+  "devDependencies": {
+    "uglify-js": "^1.3.5",
+    "webpack": "^1.12.14"
+  },
+  "dependencies": {
+    "jquery": "^2.2.1"
+  }
+}

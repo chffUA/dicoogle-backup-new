@@ -1,0 +1,31 @@
+#!/bin/bash
+
+CURRENT=`pwd`
+
+core=$CURRENT
+viewer_dev_path=$CURRENT"/../dicoogle-wsi-viewer2"
+viewer_resources_path=$CURRENT"/src/main/resources/viewer" 
+#web_app_path=$CURRENT"/src/main/resources/WebPlugins/openviewer-button" 
+
+web_app_path2=$CURRENT"/src/main/resources/WebPlugins/PathologyDemo"
+
+echo $core
+#echo $web_app_path
+echo $web_app_path2
+echo $viewer_dev_path
+
+#cd $web_app_path
+#npm install
+
+cd $web_app_path2
+npm install
+
+cd $viewer_dev_path
+npm install
+npm run build
+rm -rf $viewer_resources_path/*
+cp -r dist/* $viewer_resources_path
+
+cd $core
+mvn clean
+mvn install

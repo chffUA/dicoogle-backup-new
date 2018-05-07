@@ -1,0 +1,20 @@
+<main>
+    <div [draggable] id="rotation_box" class="info_holder ui-widget-content ui-draggable ui-draggable-handle" [style.left]=left
+        [style.top]=top [style.width]=width [style.height]=height [@scale]="windowsService.displayAnnotationPopup" style="min-width:300px">
+        <div class="dialog-controls pull-right">
+            <label class="info-label">
+                <input id="firstname" class="title-input" type="text" placeholder="Title" [(ngModel)]="title"/>
+            </label>
+            <ul class="nav nav-pills toolbar horizontal" style="margin-left:10px">
+                <input class="safari_only color-picker" type="color" [(ngModel)]="pickedColor" [value]="pickedColor">
+                <i class="fa fa-trash-o tool-icon tool desktop" (click)="removeClick()"  style="font-size:3.5em;color:white;padding:2px !important;"></i>
+                <i class="fa fa-floppy-o tool-icon tool desktop" (click)="saveClick()" style="font-size:3.5em;color:white;padding:2px !important;"></i>
+                <i class="fa fa-times tool-icon tool desktop" (click)="closeClick()" style="font-size:3.5em;color:white;padding:2px !important;"></i>
+            </ul>
+        </div>
+
+        <div class="textarea-container">
+            <textarea id="annotationText" style="resize:none" [(ngModel)]="insertedText" placeholder="Description"></textarea>
+        </div>
+    </div>
+</main>

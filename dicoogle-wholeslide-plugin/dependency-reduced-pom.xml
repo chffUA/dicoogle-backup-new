@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>pt.ua.ieeta</groupId>
+  <artifactId>dicoogle-wholeslide-plugin</artifactId>
+  <name>Dicoogle Wholeslide Plugin</name>
+  <version>0.0.1-SNAPSHOT</version>
+  <description>Adds Wholeslide imaging capabilities to dicoogle</description>
+  <build>
+    <resources>
+      <resource>
+        <targetPath>viewer</targetPath>
+        <directory>src/main/resources/viewer</directory>
+      </resource>
+      <resource>
+        <targetPath>WebPlugins/PathologyDemo</targetPath>
+        <directory>src/main/resources/WebPlugins/PathologyDemo</directory>
+        <includes>
+          <include>module.js</include>
+          <include>README.md</include>
+          <include>package.json</include>
+        </includes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.3</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <artifactSet>
+                <includes>
+                  <include>net.sf.jfastcgi:jfastcgi</include>
+                  <include>commons-pool:commons-pool</include>
+                  <include>net.sf.json-lib:json-lib</include>
+                  <include>org.eclipse.jetty:jetty-rewrite</include>
+                </includes>
+              </artifactSet>
+              <minimizeJar>false</minimizeJar>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <repositories>
+    <repository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>mi</id>
+      <url>http://bioinformatics.ua.pt/maven/content/repositories/mi</url>
+    </repository>
+  </repositories>
+  <dependencies>
+    <dependency>
+      <groupId>pt.ua.ieeta</groupId>
+      <artifactId>dicoogle-sdk</artifactId>
+      <version>2.3.1</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+</project>
+

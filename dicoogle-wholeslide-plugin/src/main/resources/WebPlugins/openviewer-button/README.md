@@ -1,0 +1,21 @@
+# openviewer-button
+> none
+
+This is a web UI result-options plugin for Dicoogle.
+
+## Building
+
+```bash
+npm install # OR npm run build
+```
+
+## Debugging
+
+```bash
+npm run build-debug # build plugin with inline source-maps
+npm run build-watch # build for debugging and watch for source code changes
+```
+
+## Deploying
+
+Place `module.js` and `package.json` in a folder in the WebPlugins directory.

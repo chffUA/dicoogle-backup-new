@@ -1,0 +1,300 @@
+.toolbar {
+    padding: 6px 0px 6px 0px;
+    width: 100%;
+    text-align: center;
+}
+
+/*Horizontal*/
+.toolbar.horizontal {
+    padding: 0 10px;
+}
+
+.toolbar.horizontal > li {
+    height: 5em;
+    width: 5.2em;
+}
+
+.toolbar.horizontal .tool,
+.toolbar.horizontal .dropdown .tool {
+    padding: 10% 0 0 0 !important;
+    height: 100%;
+}
+
+.toolbar.horizontal .tool-separator {
+    border-left: 1px solid #555;
+    border-bottom: none;
+    width: 1px !important;
+
+    margin: 1em 0.6em;
+    height: 3em;
+}
+
+.toolbar.horizontal .dropdown-menu {
+    top: auto !important;
+    margin-top: 0 !important;
+}
+
+.dropdown.right .tool-icon-dropdown {
+    bottom: 40%;
+    right: -80%;
+}
+
+.dropdown-menu.pull-up {
+    bottom: 100% !important;
+}
+
+.dropdown-menu.pull-right {
+    left: 100% !important;
+}
+
+.toolbar.horizontal #btn-report .status {
+    top: 7px;
+    right: 39px;
+}
+
+/**********************/
+
+.toolbar .tool,
+.toolbar .dropdown .tool {
+    color: #EEE;
+    margin: 0px !important;
+    padding: 2px 0px 6px 0px !important;
+}
+
+.toolbar .tool.active,
+.toolbar .dropdown .tool.active {
+    color: #333;
+    background: #EEE;
+}
+
+.toolbar .tool.disabled {
+    color: #666;
+    pointer-events: none;
+}
+
+.toolbar .dropdown .tool.disabled {
+    color: #999;
+    pointer-events: none;
+}
+
+/*When there are no sections on dropdown */
+.toolbar > .dropdown > .dropdown-menu > li > .tool {
+    margin: 0px 15px !important;
+}
+
+.toolbar > .dropdown > .dropdown-menu > li > .tool > .tool-icon {
+    font-size: 1.2em;
+}
+
+/*****************************************/
+
+.toolbar .tool-icon,
+.toolbar .dropdown .tool-icon {
+    font-size: 1.9em;
+}
+
+.toolbar .tool-text,
+.toolbar .dropdown .tool-text {
+    line-height: 1.1em;
+    font-size: 0.85em;
+    padding: 0 0.1em !important;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus,
+.toolbar .tool.desktop:hover,
+.toolbar .tool.desktop:focus
+.toolbar .dropdown .tool.desktop:hover,
+.toolbar .dropdown .tool.desktop:focus {
+    background: #474747;
+    color: #FFF;
+}
+
+.toolbar .tool.desktop.active:hover,
+.toolbar .tool.desktop.active:focus
+.toolbar .dropdown .tool.desktop.active:hover,
+.toolbar .dropdown .tool.desktop.active:focus {
+    color: #555;
+    background: #FFF;
+}
+
+.nav-pills > li > a {
+    border-radius: 0px !important;
+}
+
+.toolbar > li > a:focus {
+    text-decoration: none;
+    background: #333;
+}
+
+.toolbar .dropdown .tool-icon-dropdown {
+    position: absolute;
+    bottom: 40%;
+    left: 5%;
+    color: #999;
+    font-size: 0.9em;
+}
+
+.toolbar .tool-separator {
+    /*margin: 8px 16px;*/
+    border-bottom: 1px solid #555;
+    margin: 0.5em 1em;
+}
+
+.dropdown-menu {
+    z-index: 3050 !important;
+}
+
+.toolbar .dropdown-menu {
+    text-align: left;
+    /*right: 59px !important;*/
+    top: -3px;
+}
+
+.toolbar .dropdown-menu.multi-column {
+    width: 29em;
+}
+
+.toolbar .dropdown-menu.multi-column .dropdown-menu {
+    display: block !important;
+    position: static !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.toolbar .dropdown-menu .toollist-title {
+    text-align: center;
+}
+
+.toolbar .dropdown-menu .toollist-title-text {
+    font-size: 0.85em;
+    color: #999;
+}
+
+.toolbar .dropdown-menu .toollist-title-line {
+    margin: 0px 0px 2px 0px;
+    border-bottom: 1px solid #CCC;
+}
+
+.toolbar .dropdown-menu > li > a:hover {
+    border-radius: 3px !important;
+}
+
+.toolbar .dropdown-menu .tool {
+    color: #333;
+    line-height: 0.8em;
+    padding: 2px 4px !important;
+    border-radius: 3px !important;
+}
+
+.toolbar .dropdown-menu .tool.active {
+    background: #DFDFDF;
+    color: #333;
+}
+
+.toolbar .dropdown-menu .tool-icon {
+    font-size: 1.5em;
+}
+
+.toolbar .dropdown-menu .tool-text {
+    margin-left: 4px;
+    font-size: 0.9em;
+}
+
+.toolbar .dropdown-menu .row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+/*Views tool*/
+.views-freewall {
+    margin: 0px !important;
+    width: 75px;
+    height: 75px;
+}
+
+.views-freewall .cell {
+    background: #EEE;
+    border: 1px solid #888;
+    cursor: pointer;
+}
+
+.views-freewall .cell.selected {
+    border: 1px solid #666;
+    background: #999;
+}
+
+/*.tool-icon {*/
+/*font-size: 1.5em;*/
+/*color: #EEE;*/
+/*line-height: 0.8em;*/
+/*}*/
+
+/*.tool-icon-dark {*/
+/*color: #333;*/
+/*padding: 2px 6px;*/
+/*}*/
+
+/*a[disabled] {*/
+/*pointer-events: none;*/
+/*}*/
+
+/*.toolbar .active {*/
+/*background-color: #CCC;*/
+/*color: #111 !important;*/
+/*}*/
+
+/*.toolbar .active .disabled {*/
+/*pointer-events: none;*/
+/*}*/
+
+/* Dropdown Submenu */
+/*.toolbar .dropdown-submenu {*/
+/*position: relative;*/
+/*overflow: visible;*/
+/*}*/
+
+/*.toolbar .dropdown-submenu > .dropdown-menu {*/
+/*margin-top: 0px;*/
+/*margin-left: 0px;*/
+/*margin-right: 118px;*/
+/*border-radius: 6px 6px 6px 6px;*/
+/*}*/
+
+/*.toolbar .dropdown-submenu:hover > .dropdown-menu {*/
+/*display: block;*/
+/*}*/
+
+/*.dropdown-submenu > a:after {*/
+/*display:block;*/
+/*content:" ";*/
+/*float:right;*/
+/*width:0;*/
+/*height:0;*/
+/*border-color:transparent;*/
+/*border-style:solid;*/
+/*border-width:5px 0 5px 5px;*/
+/*border-left-color:#cccccc;*/
+/*margin-top:5px;*/
+/*margin-right:-10px;*/
+/*}*/
+
+/*.toolbar > li > a {*/
+/*margin: 0px !important;*/
+/*padding: 4px 0px !important;*/
+/*}*/
+
+/*.toolbar.desktop > li > a:hover,*/
+/*.toolbar.desktop > li > a:focus,*/
+/*.toolbar.desktop .open > a,*/
+/*.toolbar.desktop .open > a:hover,*/
+/*.toolbar.desktop .open > a:focus {*/
+/*background-color: #555;*/
+/*color: #FFF;*/
+/*}*/
+
+/*.popover {*/
+/*z-index: 3025 !important;*/
+/*}*/
+
+

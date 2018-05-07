@@ -1,0 +1,272 @@
+/*
+ * Copyright (c) 2014 BMD Software, Lda.
+ * All Rights Reserved
+ *
+ * All information contained herein is, and remains the property of BMD Software, Lda. and its suppliers, if any.
+ * The intellectual and technical concepts contained herein are proprietary to BMD Software, Lda. and its suppliers,
+ * being protected by trade secret or copyright law. Dissemination of this information or reproduction of this
+ * material is strictly forbidden unless prior written permission is obtained from BMD Software, Lda.
+ */
+
+@media (-webkit-min-device-pixel-ratio: 1.5),
+(min-resolution: 192dppx) {
+    body {
+        font-size: 1.0em !important;
+    }
+}
+
+@media (max-width: 1280px), (max-height: 1024px) {
+    body {
+        font-size: 0.85em;
+    }
+}
+
+@media (min-width: 1680px), (min-height: 1050px) {
+    body {
+        font-size: 0.93em;
+    }
+}
+
+@media (min-width: 1920px), (min-height: 1080px) {
+    body {
+        font-size: 1.0em;
+    }
+}
+
+/*@media (min-width: 2048px), (min-height: 1152px) {*/
+/*body {*/
+/*font-size: 1.2em;*/
+/*}*/
+/*}*/
+
+@media (min-width: 2560px), (min-height: 1440px) {
+    body {
+        font-size: 1.15em;
+    }
+}
+
+@media (min-width: 3840px), (min-height: 2160px) {
+    body {
+        font-size: 1.25em;
+    }
+}
+
+.height-full {
+    height: 100%;
+}
+
+.container-footer {
+    padding-bottom: 30px;
+}
+
+.container-header {
+    padding-top: 50px;
+}
+
+.navbar {
+    height: 50px !important;
+    max-height: 50px !important;
+}
+
+/*Modal*/
+.modal {
+    z-index: 6000 !important;
+    top: 0 !important;
+}
+
+.modal .modal-dialog {
+    margin-top: 51px;
+}
+
+.modal-backdrop {
+    z-index: 5001 !important;
+    overflow: hidden;
+}
+
+.modal-xlg{
+    width: 70%;
+}
+
+/*.alert {*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*width: 100%;*/
+/*}*/
+
+/*Alert modal position*/
+/*.alert-modal {*/
+    /*top: 0;*/
+/*}*/
+
+/*Form validation feedback*/
+.form-group-no-label > .form-control-feedback {
+    top: 0px !important;
+    right: 0px !important;
+}
+
+/*************************************************************/
+/** Alert **/
+/*************************************************************/
+
+/*.alert {*/
+    /*border-radius: 0px;*/
+    /*border-left: 0px;*/
+    /*border-top: 0px;*/
+    /*border-right: 0px;*/
+
+    /*z-index: 7000 !important;*/
+
+    /*opacity: 0.95;*/
+    /*filter: alpha(opacity=95);*/
+    /*-moz-opacity: 0.95;*/
+    /*-khtml-opacity: 0.95;*/
+/*}*/
+
+/*Login*/
+
+/*.serie-row:hover {*/
+/*background-color: #EFEFEF;*/
+/*cursor: pointer;*/
+/*}*/
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.nopadding-left {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+
+.nopadding-right {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.loader-white {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/viewer/assets/images/loader-white.gif") no-repeat;
+}
+
+.loader-black {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/viewer/assets/images/loader-black.gif") no-repeat;
+}
+
+/*************************************************************/
+/** Footer **/
+/*************************************************************/
+
+footer {
+    color: #666;
+    font-size: 0.8em;
+    background-color: #F9F9F9;
+    line-height: 28px;
+    border-top: 1px solid #E3E3E3;
+    height: 30px;
+    z-index: 3101;
+}
+
+a {
+    color: #a02524;
+}
+
+a:hover,
+a:focus {
+    color: #8b201f;
+    text-decoration: none;
+}
+
+.row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.vertical-middle {
+    vertical-align: middle !important;
+}
+
+#locker {
+    position: absolute;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 99999;
+}
+
+
+
+
+/*Alternative default button*/
+.btn-default-alt {
+    color: #fff;
+    background-color: #444;
+    border-color: #333;
+}
+.btn-default-alt:hover,
+.btn-default-alt:focus,
+.btn-default-alt:active,
+.btn-default-alt.active,
+.open > .dropdown-toggle.btn-default-alt {
+    color: #fff;
+    background-color: #333;
+    border-color: #222;
+}
+.btn-default-alt:active,
+.btn-default-alt.active,
+.open > .dropdown-toggle.btn-default-alt {
+    background-image: none;
+}
+.btn-default-alt.disabled,
+.btn-default-alt[disabled],
+fieldset[disabled] .btn-default-alt,
+.btn-default-alt.disabled:hover,
+.btn-default-alt[disabled]:hover,
+fieldset[disabled] .btn-default-alt:hover,
+.btn-default-alt.disabled:focus,
+.btn-default-alt[disabled]:focus,
+fieldset[disabled] .btn-default-alt:focus,
+.btn-default-alt.disabled:active,
+.btn-default-alt[disabled]:active,
+fieldset[disabled] .btn-default-alt:active,
+.btn-default-alt.disabled.active,
+.btn-default-alt[disabled].active,
+fieldset[disabled] .btn-default-alt.active {
+    background-color: #666;
+    border-color: #555;
+}
+
+/*PNotify*/
+.ui-pnotify {
+    top: 5px !important;
+    right: 5px !important;
+    min-width: 30em !important;
+    font-size: 0.9em !important;
+    z-index: 999999 !important;
+}
+
+.tooltip {
+    font-size: 0.85em !important;
+    z-index: 999999999 !important;
+}
+
+#text-wrapper {
+    border: 1px solid #E1E1E1;
+}
+
+#text-wrapper .toolbar-container {
+    background: #F1F1F1;
+    border-bottom: 1px solid #E1E1E1;
+}
+
+body{
+    background-color: #333;
+}

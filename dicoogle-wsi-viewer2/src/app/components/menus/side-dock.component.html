@@ -1,0 +1,10 @@
+<main>
+  <div class="rightdock" [style.left.px]="left" [style.top.px]="top" *ngIf="windowsService.displayDock" [@scale]="windowsService.displayDock">
+    <div class="window" *ngIf="windowsService.displayImageInformation" [@scale]="windowsService.displayImageInformation">
+      <info-window></info-window>
+    </div>
+    <div class="window" *ngIf="windowsService.displayImageAdjustments" [@scale]="windowsService.displayImageAdjustments">
+      <img-adjustments></img-adjustments>
+    </div>
+  </div>
+</main>

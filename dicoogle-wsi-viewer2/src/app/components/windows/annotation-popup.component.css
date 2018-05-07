@@ -1,0 +1,133 @@
+*{
+    font-size: 1.2em;
+}
+
+.info_holder {
+    color: black;
+    position: fixed;
+    background-color: #474747;
+    border: 2px solid #a1a1a1;
+    border-radius: 5px;
+    /*height:200px;*/
+    /*width:300px;*/
+    float:left;
+}
+
+.annotation_input{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #474740;
+    border: 2px solid black;
+}
+
+.toolbar {
+    border-radius: 2px;
+    padding: 6px 0px 6px 0px;
+    width: 100%;
+    text-align: center;
+
+    z-index: 1;
+    float: right;
+    width: auto;
+
+    font-size: 0.4em;
+}
+
+
+.toolbar.horizontal > li {
+    height: 5em;
+    width: 5.2em;
+}
+
+.toolbar.horizontal .tool,
+.toolbar.horizontal .dropdown .tool {
+    padding: 10% 0 0 0 !important;
+    height: 100%;
+}
+
+
+
+.toolbar .tool,
+.toolbar .dropdown .tool {
+    color: #EEE;
+    margin: 0px !important;
+    cursor: pointer;
+}
+
+
+
+.toolbar .tool-icon,
+.toolbar .dropdown .tool-icon {
+    font-size: 1.9em;
+}
+
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus,
+.toolbar .tool.desktop:hover,
+.toolbar .tool.desktop:focus
+.toolbar .dropdown .tool.desktop:hover,
+.toolbar .dropdown .tool.desktop:focus {
+    background: transparent;
+    color: white;
+}
+
+.toolbar .tool.desktop.active:hover,
+.toolbar .tool.desktop.active:focus
+.toolbar .dropdown .tool.desktop.active:hover,
+.toolbar .dropdown .tool.desktop.active:focus {
+    color: #808080;
+    background: transparent;
+}
+
+
+
+
+textarea{
+    font-size: 0.75em;
+    width: 100%;
+    height: 100%;
+}
+
+.dialog-controls{
+    width:100%;
+    padding-right: 0.5em;
+    height: 20%;
+}
+
+.textarea-container{
+    padding: 3px;
+    padding-bottom: 1px;
+    width: 100%;
+    height: 80%;
+}
+
+.info-label{
+    float: left;
+    padding-top: 7px;
+    font-weight: 300;
+    font-size: 1em;
+    padding-left: 3px;
+    padding-bottom: 2px;
+    width: 90px;
+}
+
+.title-input{
+    width: 90px;
+    font-size: 0.75em;
+}
+
+.color-picker{
+    border: none;
+    background: none;
+}
+
+_::-webkit-full-page-media, _:future, :root .safari_only {
+    visibility:hidden;
+}
+
+@media not all and (min-resolution:.001dpcm) { @media {
+    .safari_only { 
+        visibility:hidden;
+    }
+}}

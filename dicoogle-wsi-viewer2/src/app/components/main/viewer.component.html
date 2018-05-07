@@ -1,0 +1,14 @@
+<main>
+  <top-menu (fullScreenChange)="toggleFullscreen($event)" (rotationChange)="rotationChange($event)"></top-menu>
+  <side-dock [containerPosition]="navigatorContainerPosition" (filterChanged)="filterChangedHandler($event)"></side-dock>
+  <div id=viewermain class="viewer">
+  </div>
+  <div [hidden]="!windowsService.displayAnnotationPopup">
+    <annotation-popup></annotation-popup>
+  </div>
+  <!--<div id='right-arrow-overlay-1'>
+    <img src="cursor.png"
+         alt="cursor"
+         width="19">
+</div>-->
+</main>

@@ -1,0 +1,7 @@
+/dicoogle-wholeslide-viewer/nbproject/private/
+*.DS_Store
+
+# Intellij Core
+*.idea
+*.iml
+npm-debug.log

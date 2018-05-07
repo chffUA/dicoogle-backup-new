@@ -1,0 +1,100 @@
+#!/bin/bash
+
+# FLAGS : --with-dependencies
+usage_msg="usage: compile-script [-a|--all] [-d|--with-dependencies] [-i|--interface] [-v|--viewer]\nDefault: None is compiled, only the Plugin is packed."
+
+w_dependencies=false
+w_interface=false
+w_viewer=false
+
+while [ "$1" != "" ]; do
+    case $1 in
+        -a | --all) 	w_dependencies=true
+					w_interface=true
+					w_viewer=true
+                                ;;	
+        -d | --with-dependencies ) w_dependencies=true
+                                ;;
+        -i | --interface )    	w_interface=true
+                                ;;
+        -v | --viewer )         w_viewer=true
+                                ;;
+        * )                     echo $usage_msg
+                                exit 1
+    esac
+    shift
+done
+
+CURRENT=`pwd`
+
+dicoogle_plugin=$CURRENT"/dicoogle-wholeslide-plugin"
+
+dicoogle_plugin_interface=$dicoogle_plugin"/src/main/resources/WebPlugins/PathologyDemo"
+
+viewer_dev_path=$CURRENT"/dicoogle-wsi-viewer2"
+
+viewer_resources_path=$dicoogle_plugin"/src/main/resources/viewer" 
+
+#DEPENDENCIES
+dcm4che_path=$CURRENT"/dcm4che2"
+wsi_io_core_path=$CURRENT"/wsi-io/wsi-io-core"
+
+echo "### Dependencies Path ###"
+echo $dcm4che_path
+echo $wsi_io_core_path
+echo ""
+
+echo "### Plugins Path ###"
+echo $dicoogle_plugin
+echo $dicoogle_plugin_interface
+echo $viewer_dev_path
+echo $viewer_resources_path
+echo "### ### ### ### ### #####"
+
+if [ "$w_dependencies" = true ] ; then
+    	echo "### ### Compiling dependencies ### ###"
+	echo "### DCM4CHE ###"
+	cd $dcm4che_path
+	mvn clean
+	mvn install
+	echo "### ### ### ###"
+
+	echo "### WSI-IO  ###"
+	cd $wsi_io_core_path
+	mvn clean
+	mvn install
+	echo "### ### ### ###"
+fi
+
+echo ""
+
+if [ "$w_interface" = true ] ; then
+    	echo "### Compiling Plugin Interface  ###"
+	cd $dicoogle_plugin_interface
+	npm install
+	echo "### ### ### ### ###  ### ### ## ###"
+fi
+
+echo ""
+
+if [ "$w_viewer" = true ] ; then
+    	echo "### Compiling Viewer  ###"
+	cd $viewer_dev_path
+	npm install
+	npm run build
+	rm -rf $viewer_resources_path/*
+	test -d "$viewer_resources_path" || mkdir -p "$viewer_resources_path"
+	cp -r dist/* $viewer_resources_path
+	cd $viewer_resources_path
+	rm *.map
+	echo "### ### ### ### ###  ###"
+fi
+
+echo ""
+
+echo "### Packaging Plugin  ###"
+cd $dicoogle_plugin
+mvn clean
+mvn install
+echo "### ### ### ### ### # ###"
+

@@ -1,0 +1,186 @@
+<main (mouseleave)="changeShownState()" (mouseenter)="changeShownState()">
+  <ul class="nav nav-pills toolbar horizontal">
+    <li>
+      <a class="tool desktop" (click)="hideShowClick()">
+        <div class="tool-icon"><i class="fa fa-undo"></i></div>
+        <div class="tool-text">Hide/Show</div>
+      </a>
+    </li>
+  </ul>
+  <ul class="nav nav-pills toolbar horizontal" style="left:70px;" *ngIf="isBarActive" [@flyInOut]="hidden">
+    <li class="tool-separator"></li>
+    <li class="dropdown bottom">
+      <a class="tool dropdown-toggle desktop" data-toggle="dropdown" data-container="#topColumn">
+        <div class="tool-icon"><i class="icon-rotate"></i></div>
+        <div class="tool-text">Flip</div>
+        <div><i class="fa fa-caret-down tool-icon-dropdown"></i></div>
+      </a>
+      <ul class="dropdown-menu pull-bottom multi-column">
+        <div class="col-sm-6">
+          <ul class="dropdown-menu">
+            <li class="toollist-title">
+              <div class="toollist-title-text">Rotate</div>
+              <div class="toollist-title-line"></div>
+            </li>
+            <li>
+              <a class="tool desktop" (click)="rotateClick(90)">
+                <span class="tool-icon"><i class="fa fa-rotate-right"></i></span>
+                <span class="tool-text">90º Right</span>
+              </a>
+            </li>
+            <li>
+              <a class="tool desktop" (click)="rotateClick(-90)">
+                <span class="tool-icon"><i class="fa fa-rotate-left"></i></span>
+                <span class="tool-text">90º Left</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </ul>
+    </li>
+    <li>
+      <a class="tool desktop" (click)="fitClick()">
+        <div class="tool-icon"><i class="fa fa-arrows"></i></div>
+        <div class="tool-text">Fit</div>
+      </a>
+    </li>
+
+
+    <li class="tool-separator"></li>
+
+    <li>
+      <a class="tool desktop {{ this.windowsService.displayImageAdjustments ? 'selected' : '' }}" (click)="imgAdjClick()">
+        <div class="tool-icon"><i class="fa fa-adjust"></i></div>
+        <div class="tool-text">Image Adjustments</div>
+      </a>
+    </li>
+    <li>
+      <a class="tool desktop {{ this.windowsService.displayImageInformation ? 'selected' : '' }}" (click)="imgInfoClick()">
+        <div class="tool-icon"><i class="fa fa-info-circle"></i></div>
+        <div class="tool-text">Image info</div>
+      </a>
+    </li>
+
+    <li class="tool-separator"></li>
+
+    <li class="dropdown bottom">
+      <a id="btn-Annotate" href="#" class="tool dropdown-toggle desktop" data-toggle="dropdown" data-container="#topColumn">
+        <div class="tool-icon"><i class="icon-annotate"></i></div>
+        <div class="tool-text">Annotate</div>
+        <div><i class="fa fa-caret-down tool-icon-dropdown"></i></div>
+      </a>
+      <ul class="dropdown-menu pull-bottom multi-column">
+        <div class="row">
+          <div class="col-sm-6">
+            <ul class="dropdown-menu">
+              <li class="toollist-title">
+                <div class="toollist-title-text">Lines</div>
+                <div class="toollist-title-line"></div>
+              </li>
+              <li>
+                <a class="tool" id="btn-Line" (click)="startDrawingAnnotation(1)">
+                  <span class="tool-icon"><i class="icon-line"></i></span>
+                  <span class="tool-text">Ruler</span>
+                </a>
+              </li>
+              <!--li>
+                <a class="tool" id="btn-Arrow" (click)="startDrawingAnnotation(2)">
+                  <span class="tool-icon"><i class="icon-arrow"></i></span>
+                  <span class="tool-text">Arrow</span>
+                </a>
+              </li-->
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <ul class="dropdown-menu">
+              <li class="toollist-title">
+                <div class="toollist-title-text">Polygons</div>
+                <div class="toollist-title-line"></div>
+              </li>
+              <li>
+                <a class="tool" id="btn-Rectangle" (click)="startDrawingAnnotation(0)">
+                  <span class="tool-icon"><i class="icon-square"></i></span>
+                  <span class="tool-text">Rectangle</span>
+                </a>
+              </li>
+              <!--li>
+                <a class="tool" id="btn-Circle" (click)="startDrawingAnnotation(4)">
+                  <span class="tool-icon"><i class="icon-circle"></i></span>
+                  <span class="tool-text">Circle</span>
+                </a>
+              </li-->
+            </ul>
+          </div>
+        </div>
+      </ul>
+    </li>
+
+    <li>
+      <a class="tool desktop" (click)="resetTotalClick()">
+        <div class="tool-icon"><i class="fa fa-power-off"></i></div>
+        <div class="tool-text">Reset</div>
+      </a>
+    </li>
+
+    <li class="tool-separator"></li>
+
+    <li class="dropdown bottom">
+      <a id="btn-Miscellaneous" href="#" class="tool dropdown-toggle desktop" data-toggle="dropdown" data-container="#topColumn">
+        <div class="tool-icon"><i class="icon-miscellaneous"></i></div>
+        <div class="tool-text">Misc.</div>
+        <div><i class="fa fa-caret-down tool-icon-dropdown"></i></div>
+      </a>
+      <ul class="dropdown-menu pull-bottom multi-column">
+        <div class="row">
+          <div class="col-sm-6">
+            <ul class="dropdown-menu">
+              <li class="toollist-title">
+                <div class="toollist-title-text">General</div>
+                <div class="toollist-title-line"></div>
+              </li>
+              <li>
+                <a class="tool" id="btn-FullscreenTool" (click)="fullscreenClick()">
+                  <span class="tool-icon"><i class="fa fa-desktop"></i></span>
+                  <span class="tool-text">Toggle Fullscreen</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+    </li>
+  </ul>
+
+  <!--div class="ui labeled icon menu inverted mini">
+  <a class="item">
+    <i class="hide icon"></i>
+    Hide/Show
+  </a>
+  <a class="item">
+    <i class="fa fa-expand" aria-hidden="true"></i>
+    Fit Content
+  </a>
+
+  <a class="item" (click)="rotateClick(-90)">
+    <i class="fa fa-repeat" aria-hidden="true"></i>
+    Rotate Clockwise
+  </a>
+
+  <a class="item" (click)="rotateClick(90)" >
+    <i class="fa fa-undo" aria-hidden="true"></i>
+    Rotate Counter Clockwise
+  </a>
+</div-->
+
+  <!--div class="icon-bar">
+    <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+    <i class="fa fa-bars" aria-hidden="true"></i>
+
+    <!--a href="#"><i class="fa fa-search"></i></a>
+    <a href="#"><i class="fa fa-envelope"></i></a>
+    <a href="#"><i class="fa fa-globe"></i></a>
+    <a href="#"><i class="fa fa-trash"></i></a>
+  </div-->
+</main>

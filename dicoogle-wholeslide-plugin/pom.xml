@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>pt.ua.ieeta</groupId>
+    <artifactId>dicoogle-wholeslide-plugin</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Dicoogle Wholeslide Plugin</name>
+    <description>Adds Wholeslide imaging capabilities to dicoogle</description>
+
+    <repositories>
+        <repository>
+            <id>mi</id>
+            <url>http://bioinformatics.ua.pt/maven/content/repositories/mi</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>pt.ua.ieeta</groupId>
+            <artifactId>dicoogle-sdk</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.jfastcgi</groupId>
+            <artifactId>jfastcgi</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-pool</groupId>
+            <artifactId>commons-pool</artifactId>
+            <version>1.6</version>
+        </dependency>
+        <dependency> <!-- Should be included in the latest dicoogle-sdk... -->
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <classifier>jdk15</classifier>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-rewrite</artifactId>
+            <version>9.0.3.v20130506</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources/viewer</directory>
+                <targetPath>viewer</targetPath>
+            </resource>
+            <resource>
+                <directory>src/main/resources/WebPlugins/PathologyDemo</directory>
+                <targetPath>WebPlugins/PathologyDemo</targetPath>
+                <includes>
+                    <include>module.js</include>
+                    <include>README.md</include>
+                    <include>package.json</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>net.sf.jfastcgi:jfastcgi</include>
+                                    <include>commons-pool:commons-pool</include>
+                                    <include>net.sf.json-lib:json-lib
+                                    </include> <!-- Should be included in the latest dicoogle-sdk... -->
+                                    <include>org.eclipse.jetty:jetty-rewrite</include>
+                                </includes>
+                            </artifactSet>
+                            <minimizeJar>false</minimizeJar>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
