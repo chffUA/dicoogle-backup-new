@@ -5,8 +5,48 @@
     <title>Dicoogle - Whole Slide Viewer</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      var TogetherJSConfig_autoStart = true; 
+    </script>
+    <script src="https://togetherjs.com/togetherjs-min.js"></script>
+
   </head>
   <body>
     <my-app>Loading...</my-app>
+    <button id="tryButton" onclick="myFunction()" value="" Style="display: hidden; "></button>
+
+    <script>   
+
+      function myFunction() {
+        var info = document.getElementById('tryButton').getAttribute("value");  
+        fireTogetherJSVisibility(info); 
+      }
+
+      var visibilityChangeFromRemote = false;
+
+      function fireTogetherJSVisibility(event) {
+        if (visibilityChangeFromRemote) {
+          return;
+        }
+        var obj = JSON.parse(event);
+        TogetherJS.send({type: "event", msg:{name: obj.name, value: obj.value}});
+      }
+
+      TogetherJS.hub.on("event", function (msgIn) { 
+        if (! msgIn.sameUrl) {
+          return;
+        }
+        visibilityChangeFromRemote = true;
+        try {
+          var el = document.getElementById('sendButton');
+          el.setAttribute("value", JSON.stringify(msgIn.msg));
+          console.log("SETTED VALUE WAS: " + el.getAttribute("value")); 
+          el.click(); 
+        } finally {
+          visibilityChangeFromRemote = false;
+        }
+      });
+      
+    </script>
   </body>
 </html>

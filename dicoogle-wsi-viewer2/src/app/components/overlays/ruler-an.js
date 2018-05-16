@@ -186,8 +186,6 @@ export let RulerAnn = fabric.util.createClass(fabric.Object, {
             //Têm de ser injectadas depois do construtor.
             //FALTA A COR.
         }
-		//console.log("line from ("+this.getStartPoint().x.toFixed(0)+","+this.getStartPoint().y.toFixed(0)+
-		//") to ("+this.getEndPoint().x.toFixed(0)+","+this.getEndPoint().y.toFixed(0)+")");
         return ret;
     },
 

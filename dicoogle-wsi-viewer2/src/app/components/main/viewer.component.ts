@@ -11,12 +11,14 @@ import { WindowsService } from '../../services/windows.service';
 import { AnnotationService } from '../../services/annotation.service';
 
 import { FabricOverlayController, AnnotationTypes } from '../overlays/fabric-overlays';
-import { Point, ImagePoint } from '../../classes/point';
+import { ImagePoint } from '../../classes/point';
 
 var OpenSeadragon = require('../../../resources/scripts/openseadragon');
 require('../../../resources/scripts/openseadragon-filtering');
 require('../../../resources/scripts/OpenSeadragonScalebar/openseadragon-scalebar');
 require('../../../resources/scripts/openseadragon-fabricjs-overlay');
+//require('../../../resources/scripts/together');
+
 
 var jQuery = require('jquery');
 var screenfull = require('screenfull');
@@ -47,18 +49,17 @@ export class ViewerComponent implements OnInit, AfterViewInit {
     viewer: any;
     standardMouseTracker: any;
 
+    overlayController: FabricOverlayController;
+    navigatorContainerPosition = { top: 0, left: 0, width: 0, height: 0 };
+
+    longpress_timer: number;
+
 	lastZoomValue: number;
     lastFlipValue: number;
     lastMouseUpdate: number;
     minMouseUpdateDelay: number;
 
-    overlayController: FabricOverlayController;
-    navigatorContainerPosition = { top: 0, left: 0, width: 0, height: 0 };
-
-    longpress_timer: any;
-	
-    db: string;
-    server: any;
+    dicoogleEvent: any; 
 
     constructor(private route: ActivatedRoute, private viewerService: ViewerService, private errorService: ErrorService, private windowsService: WindowsService, private router: Router, private annotationService: AnnotationService) {
         this.viewerService.filterChanged.debounceTime(500).subscribe((obj: any[]) => this.filterChangedHandler(obj));
@@ -68,26 +69,51 @@ export class ViewerComponent implements OnInit, AfterViewInit {
         this.viewerService.startDrawingOverlay.subscribe((ann_type: AnnotationTypes) => this.drawAnnotation(ann_type));
         this.viewerService.endDrawingOverlay.subscribe((obj: any) => this.activateMouseTrackers());
         this.longpress_timer = undefined;
-		
-		//ignore useless commands
-		this.lastZoomValue = -1;
+
+
+        //ignore useless commands
+        this.lastZoomValue = -1;
         this.lastFlipValue = -1;
         this.lastMouseUpdate = new Date().getTime(); //ms
         this.minMouseUpdateDelay = 2000; //ms
-		
-		//get db from service
-        this.db = this.viewerService.getDB();
-        /*MongoClient.connect(this.db, function(err: any, dbo: any) {
-        if(!err) {
-            this.server = dbo.db("???");
-            console.log("component linked to db: "+this.db);
-        }
-        });	*/
     }
-	
-	//method that listens to messages sent by db is at the end of ngOnInit()
-	
-	//method that handles messages received from db
+
+    toggleFullscreen(): void {
+        if (screenfull.enabled) {
+            screenfull.toggle();
+        } else {
+            // Ignore or do something else
+        }
+    }
+
+    rotationChange(angle: number): void {
+        let currentAngle = this.viewer.viewport.getRotation();
+        
+        
+		let val: number = currentAngle+angle;
+		if (val<0) val = 360 + val;
+		if (val>=360) val = val - 360;
+		
+		if (val != this.lastFlipValue) {
+            this.viewerService.informDatabase({name: "FLIP", value: val});
+            //this.replicate({name: "MOUSE"});
+			this.lastFlipValue = val;
+        }
+        
+        this.viewer.viewport.setRotation(currentAngle + angle);
+
+    }
+
+    replayEvent(){
+        //replay the event received
+        var el = document.getElementById('sendButton');
+        var msg = el.getAttribute("value");
+        console.log("REPLAY HAPPENED");
+        console.log(msg);  
+        this.replicate(JSON.parse(msg)); 
+    }
+
+    //method that handles messages received from db
 	replicate(msg: any) {
 		if (msg.name == "ZOOM") {
 			this.lastZoomValue = msg.value;
@@ -119,34 +145,12 @@ export class ViewerComponent implements OnInit, AfterViewInit {
         } else if (msg.name == "PAN") {
             let imageDimens = this.viewer.world.getItemAt(0).getContentSize();
             this.viewer.viewport.panTo(
-                new OpenSeadragon.Point(msg.x/imageDimens.x,msg.y/imageDimens.y), 
+                new OpenSeadragon.Point(msg.value.x/imageDimens.x,msg.value.y/imageDimens.y), 
                 false);
         }
 
         //missing map coords, mouse coords
 	}
-
-    toggleFullscreen(): void {
-        if (screenfull.enabled) {
-            screenfull.toggle();
-        } else {
-            // Ignore or do something else
-        }
-    }
-
-    rotationChange(angle: number): void {
-        let currentAngle = this.viewer.viewport.getRotation();
-        this.viewer.viewport.setRotation(currentAngle + angle);
-		let val: number = currentAngle+angle;
-		if (val<0) val = 360 + val;
-		if (val>=360) val = val - 360;
-		
-		if (val != this.lastFlipValue) {
-            this.viewerService.informDatabase({name: "FLIP", value: val});
-            //this.replicate({name: "MOUSE"});
-			this.lastFlipValue = val;
-		}
-    }
 
     ngOnInit(): void {
         this.route.queryParams.forEach((params: Params) => {
@@ -170,8 +174,7 @@ export class ViewerComponent implements OnInit, AfterViewInit {
                     showFullPageControl: false,
                     navigatorAutoFade: false,
                     crossOriginPolicy: 'Anonymous',
-                    debugMode: false,
-                    overlays: []
+                    debugMode: false
                 });
 
                 if (this.wado_source.resolution) {
@@ -229,7 +232,8 @@ export class ViewerComponent implements OnInit, AfterViewInit {
                     let webPoint = event.position;
                     let viewportPoint = tt.viewer.viewport.pointFromPixel(new OpenSeadragon.Point(cx,cy));
                     let imagePoint = tt.viewer.viewport.viewportToImageCoordinates(viewportPoint);
-                    this.viewerService.informDatabase({name: "PAN", x: Math.round(imagePoint.x), y: Math.round(imagePoint.y)});
+                    this.viewerService.informDatabase({name: "PAN",
+                    value:{x: Math.round(imagePoint.x), y: Math.round(imagePoint.y)}});
                     clearTimeout(this.longpress_timer);                                      
                 };
                 let n = innerTracker.dragHandler;
@@ -257,19 +261,6 @@ export class ViewerComponent implements OnInit, AfterViewInit {
                 this.router.navigate(['/error']);
             }
         });
-
-        //start querying the db periodically to update
-        var querydb = setInterval(function(){
-            /*var query = { address: "Park Lane 38" };
-  dbo.collection("customers").find(query).toArray(function(err, result) {
-    if (err) throw err;
-    console.log(result);
-  });*/
-
-  //for r in result: this.replicate(r)
-            console.log("queried")
-        }, 1250);
-
     }
 
     ngAfterViewInit() {
@@ -331,10 +322,11 @@ export class ViewerComponent implements OnInit, AfterViewInit {
 
     // events for image info div
     zoom_changed(zoomInfo: number): void {
-		if (zoomInfo != this.lastZoomValue) {
-			this.viewerService.zoomChanged.emit(zoomInfo);
+        this.dicoogleEvent = zoomInfo; 
+        if (zoomInfo != this.lastZoomValue) {
 			this.viewerService.informDatabase({name: "ZOOM", value: zoomInfo});
-			this.lastZoomValue = zoomInfo;
+            this.lastZoomValue = zoomInfo;
+            this.viewerService.zoomChanged.emit(zoomInfo);
 		}
     }
 
@@ -343,12 +335,13 @@ export class ViewerComponent implements OnInit, AfterViewInit {
     }
 
     coordinates_changed(coordinatesInfo: ImagePoint): void {
-        /*let now = new Date().getTime();
-        if (now-this.lastMouseUpdate>=this.minMouseUpdateDelay) {
-            this.viewerService.informDatabase({name: "MOUSE", x: Math.floor(coordinatesInfo.x), y: Math.floor(coordinatesInfo.y), user: 0});
-            this.lastMouseUpdate = now;
-        }*/
         this.viewerService.coordinatesChanged.emit(coordinatesInfo);
+        let now = new Date().getTime();
+        if (now-this.lastMouseUpdate>=this.minMouseUpdateDelay) {
+            this.viewerService.informDatabase({name: "MOUSE", 
+            value:{x: Math.floor(coordinatesInfo.x), y: Math.floor(coordinatesInfo.y), user: 0}});
+            this.lastMouseUpdate = now;
+        }
     }
 
     resetZoomClicked(obj: any): void {
@@ -360,15 +353,13 @@ export class ViewerComponent implements OnInit, AfterViewInit {
     initFabricsOverlay() {
         this.overlayController = new FabricOverlayController(this.viewer, this.viewerService, this.windowsService, this.annotationService, this.seriesInstanceUID);
         this.overlayController.drawOverlay(this.viewer);
-        
     }
 
     drawAnnotation(annotation_type: AnnotationTypes) {
         this.viewer.setMouseNavEnabled(false);
         this.standardMouseTracker.setTracking(false);
-       //console.log("Entering in drawing mode:"); 
+       //console.log("Entering in drawing mode:");
         this.overlayController.startDrawing(this.viewer, annotation_type);
-        
     }
 
     activateMouseTrackers() {

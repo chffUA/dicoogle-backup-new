@@ -210,15 +210,13 @@ export class FabricOverlayController {
     startDrawing(viewer: any, type: AnnotationTypes) {
         this.state = State.Drawing;
         this.drawingType = type;
-        this.mouseTracker.setTracking(true);  
-            
+        this.mouseTracker.setTracking(true);        
     }
 
     endDrawing() {
         this.state = State.Disabled;
         this.mouseTracker.setTracking(false);
         this.viewerService.endDrawingOverlay.emit();
-        
     }
 
     rotationChanged(degrees: number) {
@@ -246,50 +244,20 @@ export class FabricOverlayController {
 		let ann = this.annotations[this.selectedIndexAnnot];
 		
 		if (ann.type=="rectangle") {	
-			this.viewerService.informDatabase({name: "ANNOTATION", type: ann.type, id: this.selectedIndexAnnot, 
+            this.viewerService.informDatabase({name: "ANNOTATION", 
+            value:{type: ann.type, id: this.selectedIndexAnnot, 
 			left: Math.floor(ann.left), top: Math.floor(ann.top), height: Math.floor(ann.height), width: Math.floor(ann.width), 
-			stroke: ann.stroke, strokeWidth: ann.strokeWidth, title: ann.title, body: ann.annotation, angle: Math.floor(ann.angle)});
+			stroke: ann.stroke, strokeWidth: ann.strokeWidth, title: ann.title, body: ann.annotation, angle: Math.floor(ann.angle)}});
 		} else if (ann.type=="ruler") {
-			this.viewerService.informDatabase({name: "ANNOTATION", type: ann.type, id: this.selectedIndexAnnot, 
+            this.viewerService.informDatabase({name: "ANNOTATION",
+            value:{type: ann.type, id: this.selectedIndexAnnot, 
 			x1: Math.floor(ann.x1), y1: Math.floor(ann.y1), x2: Math.floor(ann.x2), y2: Math.floor(ann.y2), 
-			stroke: ann.stroke, strokeWidth: ann.strokeWidth, title: ann.title, body: ann.annotation});
+			stroke: ann.stroke, strokeWidth: ann.strokeWidth, title: ann.title, body: ann.annotation}});
 		}
 		
 		/*for (var r in this.annotations[this.selectedIndexAnnot]) {
 			console.log(r);
 		}*/
-    }
-
-    replicateAnnotation(msg: any) {
-        let ann: any = null;
-
-        if (msg.type == "rectangle") {
-            ann = new RectangleAnn.RectangleAnn(msg.left, 
-                msg.top, msg.width, 
-                msg.height, msg.angle);
-        } else if (msg.type == "ruler") {
-            ann = new RulerAnn.RulerAnn(new Point(msg.x1,msg.y1), 
-                new Point(msg.x2,msg.y2), this.viewer_resolution);
-        }
-
-        ann.setDescription(msg.body);
-        ann.setTitle(msg.title);
-        ann.setStroke(msg.stroke);
-        ann.setStrokeWidth(msg.strokeWidth);
-        ann.uid = msg.id;
-
-        this.overlay.fabricCanvas().add(ann);
-        this.annotations.push(ann);
-        this.annotations[msg.id] = ann;
-
-        this.annotationService.postAnnotation(this.annotations[msg.id], this.seriesInstanceUid).subscribe();
-    }
-
-    removeReplicatedAnnotation(id: number) {
-        let uid = this.annotations[id].uid;
-        this.overlay.fabricCanvas().remove(this.annotations[id]);
-        this.annotations.splice(id, 1);
-        this.annotationService.deleteAnnotation(uid, this.seriesInstanceUid).subscribe();
     }
 
     removeAnnotation(obj: any) {
@@ -301,6 +269,39 @@ export class FabricOverlayController {
         this.annotationService.deleteAnnotation(uid, this.seriesInstanceUid).subscribe();
 		this.viewerService.informDatabase({name: "DELETE", value: this.selectedIndexAnnot});
 		//console.log("del "+this.selectedIndexAnnot);
+    }
+
+    replicateAnnotation(msg: any) {
+        let ann: any = null;
+        let annConf = msg.value; 
+
+        if (annConf.type == "rectangle") {
+            ann = new RectangleAnn.RectangleAnn(annConf.left, 
+                annConf.top, annConf.width, 
+                annConf.height, annConf.angle);
+        } else if (annConf.type == "ruler") {
+            ann = new RulerAnn.RulerAnn(new Point(annConf.x1,annConf.y1), 
+                new Point(annConf.x2,annConf.y2), this.viewer_resolution);
+        }
+
+        ann.setDescription(annConf.body);
+        ann.setTitle(annConf.title);
+        ann.setStroke(annConf.stroke);
+        ann.setStrokeWidth(annConf.strokeWidth);
+        ann.uid = annConf.id;
+
+        this.overlay.fabricCanvas().add(ann);
+        this.annotations.push(ann);
+        this.annotations[msg.id] = ann;
+
+        this.annotationService.postAnnotation(this.annotations[annConf.id], this.seriesInstanceUid).subscribe();
+    }
+
+    removeReplicatedAnnotation(id: number) {
+        let uid = this.annotations[id].uid;
+        this.overlay.fabricCanvas().remove(this.annotations[id]);
+        this.annotations.splice(id, 1);
+        this.annotationService.deleteAnnotation(uid, this.seriesInstanceUid).subscribe();
     }
 
     downloadAnnotation(obj: any) {

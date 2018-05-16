@@ -28,8 +28,6 @@ export class ImageAdjustmentsWindowComponent implements OnInit, Listner {
 
     clicks: Observable<{}>;
     result: Observable<{}>;
-	
-	lastFilter: any;
 
     constructor(private viewerService: ViewerService) {
         this.brightControl = new Control(0, this);
@@ -37,8 +35,6 @@ export class ImageAdjustmentsWindowComponent implements OnInit, Listner {
         this.gammaControl = new Control(1, this);
 
         this.rgbControl = new RGBControl(0, this);
-		
-		this.lastFilter = {};
     }
 
     ngOnInit() {
@@ -51,26 +47,18 @@ export class ImageAdjustmentsWindowComponent implements OnInit, Listner {
 
         if (this.brightControl.enabled) {
             filters.push({ name: "BRIGHTNESS", value: +this.brightControl.value });
-			//console.log("brightness: "+this.brightControl.value);
         }
         if (this.contrastControl.enabled) {
             filters.push({ name: "CONTRAST", value: +this.contrastControl.value });
-			//console.log("contrast: "+this.contrastControl.value);
         }
         if (this.gammaControl.enabled) {
             filters.push({ name: "GAMMA", value: +this.gammaControl.value });
-			//console.log("gamma: "+this.gammaControl.value);
         }
         if (this.rgbControl.enabled) {
             filters.push({ name: "COLOR", value: [+this.rgbControl.red, +this.rgbControl.green, +this.rgbControl.blue] });
-			//console.log("rgb filter: ["+this.rgbControl.red+" "+this.rgbControl.green+" "+this.rgbControl.blue+"]");
         }
-		
-		if (filters != this.lastFilter) {
-			this.viewerService.filterChanged.emit(filters);
-			this.viewerService.informDatabase({name: "FILTERS", value: filters});
-			this.lastFilter = filters;
-		}
+
+        this.viewerService.filterChanged.emit(filters);
     }
 
 

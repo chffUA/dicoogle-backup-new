@@ -17,11 +17,8 @@ export class ViewerService {
 
     public startDrawingOverlay: EventEmitter<any>;
     public endDrawingOverlay: EventEmitter<any>;
-	
-    public db: string;
-    public server: any;
 
-    constructor(db: string) {
+    constructor() {
         this.filterChanged = new EventEmitter<any[]>();
 
         this.zoomChanged = new EventEmitter<number>();
@@ -33,22 +30,8 @@ export class ViewerService {
 
         this.startDrawingOverlay = new EventEmitter<any>();
         this.endDrawingOverlay = new EventEmitter<any>();
-		
-		//db instantiation here
-		
-		this.db = db;
-		/*MongoClient.connect(this.db, function(err: any, dbo: any) {
-        if(!err) {
-            this.server = dbo.db("???");
-            console.log("component linked to db: "+this.db);
-        }
-        });	*/
 
     }
-	
-	public getDB() {
-		return this.db;
-	}
 
     public changeFilter(object: any[]) {
         this.filterChanged.emit(object);
@@ -73,15 +56,16 @@ export class ViewerService {
     public fullscreen() {
         this.fullscreenClicked.emit();
     }
-	
-	//my stuff
-	
+
     public informDatabase(json: any) { //{name, value}
-    /*dbo.collection("customers").insertOne(json, function(err, res) {
-    if (err) throw err;
-    console.log("1 document inserted");
-    db.close();
-  });*/
-		console.log(JSON.stringify(json));
+        /*dbo.collection("customers").insertOne(json, function(err, res) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        db.close();
+        });*/
+        var el = document.getElementById('tryButton');
+        el.setAttribute("value", JSON.stringify(json)); 
+        el.click();
 	}
+
 }

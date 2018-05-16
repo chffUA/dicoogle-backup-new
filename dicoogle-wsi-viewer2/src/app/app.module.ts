@@ -19,8 +19,7 @@ import { WindowsService } from './services/windows.service';
 import { ErrorService } from './services/error.service';
 import { AnnotationService } from './services/annotation.service';
 
-const db = "abcdef";
-const viewerService = new ViewerService(db);
+const viewerService = new ViewerService();
 const windowsService = new WindowsService();
 const errorService = new ErrorService();
 

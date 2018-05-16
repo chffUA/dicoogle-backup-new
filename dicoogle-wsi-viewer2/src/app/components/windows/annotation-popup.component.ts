@@ -45,20 +45,11 @@ export class AnnotationPopupComponent {
 
     saveClick(): void {
         this.windowsService.saveAnnotation([this.insertedText, this.pickedColor, this.title]);
-		//console.log("annotation saved, details below:");
-		//console.log("annotation color: "+this.pickedColor+
-		//"; title: "+this.title+
-		//"; text: "+this.insertedText+
-		//"; static relative dimens: "+this.left+" from left, "+this.top+" from top");
-		//this.viewerService.informDatabase({name
-		//this.viewerService.informDatabaseOfAnno({});
-		//console.log("popup save click");
     }
 
 
     closeClick(): void {
         this.windowsService.displayAnnotationPopup = false;
-		//console.log("annotation closed");
     }
 
     downloadClick(): void {
@@ -90,6 +81,5 @@ export class AnnotationPopupComponent {
         this.insertedText = obj[2];
         this.pickedColor = obj[3];
         this.title = obj[4];
-
     }
 }

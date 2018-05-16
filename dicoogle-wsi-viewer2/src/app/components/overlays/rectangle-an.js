@@ -92,8 +92,6 @@ export let RectangleAnn = fabric.util.createClass(fabric.Rect, {
             //Têm de ser injectadas depois do construtor.
             angle: this.angle,
         }
-		console.log("rect from ("+this.left.toFixed(0)+","+this.top.toFixed(0)+
-		") with width "+this.width.toFixed(0)+" and height "+this.height.toFixed(0)+" and angle "+this.angle);
         return ret;
     }
 
